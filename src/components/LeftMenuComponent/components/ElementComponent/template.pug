@@ -1,0 +1,5 @@
+.element-container
+  ElementView(v-if="element.sub.length === 0", :isClose="isClose", :isSubElement="false", :element="element", :isFocus="false", :isOpen="isOpen", :isLink="true")
+
+  .sub-elements-menu(v-if="element.sub.length > 0")
+    SubElementComponent(:isOpen="isOpen", @closeChildrenEvent="closeChildrenHandler", :element="element", :isSubElement="false", :isCloseChildrenProp="isCloseChildrenProp", :isClose="isClose")

@@ -1,0 +1,87 @@
+@import "~@assets/theme/variables"
+@import "~@assets/theme/mixins"
+
+
+.leftmenu-container
+  background-color secondary_hover
+  padding-bottom 32px
+.leftmenu
+  background-color secondary_hover
+  min-height 100vh
+  padding 0
+  // position
+  // overflow-y auto
+  // overflow-x hidden
+
+.control
+  padding 0
+  margin 0
+  width 100%
+  height 70px
+  background-color secondary_border
+  margin-bottom 32px
+  // background-image url(./../../assets/icons/menu.svg)
+  // background-repeat no-repeat
+  // background-position center center
+  // cursor pointer
+.toogle
+  width 24px
+  cursor pointer
+.toogle path
+    fill brand_normal
+.toogle:hover path
+    fill brand_hover
+.col-toogle
+  text-align center
+  padding 0px
+.leftmenu.opened .col-toogle
+  max-width 40px
+  padding-right 16px
+.leftmenu.opened
+  max-width 300px !important
+  width 300px !important
+  transition all ease-out 0.25s
+// .leftmenu.opened .control
+//   background-position 90% center
+
+.leftmenu-container.opened
+  width 300px
+
+.leftmenu.closed
+  max-width 70px !important
+  width 70px !important
+  transition all ease-out 0.25s
+
+.leftmenu.closed .control .title
+  display none
+
+.leftmenu.opened .control .toogle
+  float right
+.leftmenu.opened .control .title
+  display block
+
+.title
+  text-overflow ellipsis
+  color white
+  font_title()
+  text-transform uppercase
+  margin 0
+  padding 0
+  margin-left 16px
+
+.section > .text
+  font_button_small()
+  color secondary_text
+
+.elements
+  margin-top 32px
+
+.leftmenu.closed .elements
+  margin-top 0
+
+.backdrop
+  display none
+@import './styles/responsive/style'
+
+
+

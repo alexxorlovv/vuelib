@@ -1,0 +1,24 @@
+ListElement(:class="[isFirstChild ? 'menu__list-first-child' : '']")
+  .menu__arrow: ArrowElement(v-if="!isFirst", width="10", :theme="theme", :placement="placement")
+  .menu__child-title(v-if="!isFirst && !isOpen") {{text}}
+  MenuItemComponent(v-for="(element, index) in elements",
+                    :class="[isFirst ? 'menu__item-first' : '']"
+                    :key="index",
+                    @parentCloseEvent="parentCloseEventHandler",
+                    @closeChildrenEvent="closeChildrenHandler",
+                    :isCloseChildrenProp="isCloseChildren",
+                    @diactiveMenuEvent="diactiveMenuHandler",
+                    :isDiactiveMenu="isDiactiveMenu",
+                    @activeMenuEvent="activeMenuHandler",
+                    :isHover="isHover",
+                    :theme="theme",
+                    :element="element",
+                    :isFirst="isFirst",
+                    :firstOpen="firstOpen",
+                    @firstOpenEvent="firstOpenEventHandler",
+                    @firstCloseEvent="firstCloseEventHandler",
+                    @fullCloseEvent="fullCloseEventHandler",
+                    :isClose="isClose",
+                    :isOpen="isOpen",
+                    :placement="placement",
+                    :text="element.text")

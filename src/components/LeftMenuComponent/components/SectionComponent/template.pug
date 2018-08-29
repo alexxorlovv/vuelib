@@ -1,0 +1,7 @@
+.section
+  .name
+    .text(v-if="isOpen") {{section.name}}
+    //@assets/icons/more.svg
+    .icon-more(v-if="!isOpen"): IconElement(src="more").more
+  .elements
+    ElementComponent( v-for="(element, index) in section.elements", @closeChildrenEvent="closeChildrenHandler", :isCloseChildrenProp="isCloseChildrenProp", :key="index", :element="element", :isOpen="isOpen", :isHover="isHover", :isClose="isClose")

@@ -1,0 +1,56 @@
+@import "~@assets/theme/variables"
+@import "~@assets/theme/mixins"
+
+
+
+
+.sub-elements-menu .dropdown.opened .element
+  background-color secondary_border
+.sub-elements-menu .sub-element
+  // background-color secondary_border
+  margin 0
+  height 40px
+.sub-icon .icon
+  width 20px
+.sub-icon
+  padding-right 0
+  padding-left 16px
+  max-width 36px
+  min-width 36px
+.sub-arrow
+  text-align right
+  padding-left 0
+  max-width calc(14px + 32px)
+  padding-right 32px
+.sub-element > .sub-text
+  font_text()
+  color secondary_text
+.sub-element > .sub-text:hover, .sub-element > .sub-text:focus
+  font_text()
+  color secondary_light_text
+.sub-text
+  padding-left 16px
+  padding-right 16px
+.dropdown-menu-sub
+  padding-left 16px
+  display none
+.dropdown-menu-sub.opened
+  display block
+.dropdown.opened .col-arrow >.arrow-right
+  transform rotate(90deg)
+  transition all ease-out 0.25s
+.dropdown .col-arrow >.arrow-right
+  transition all ease-out 0.25s
+.dropdown-menu-elem
+  padding-left 32px
+  background-color secondary_border
+  width 100%
+  //top -56px
+  //display none
+  //transition all ease-out 0.25s
+//.dropdown-menu-elem.opened
+  //display block
+  //transform translateY(56px)
+  //transition all ease-out 0.25s
+
+@import './styles/responsive/style'

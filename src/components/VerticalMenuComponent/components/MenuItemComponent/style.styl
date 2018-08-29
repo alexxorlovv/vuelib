@@ -1,0 +1,154 @@
+@import "~@assets/theme/variables"
+@import "~@assets/theme/mixins"
+
+.menu__item-arrow > .nulled-icon, .menu__item-icon > .nulled-icon
+  width 20px
+
+.menu__item
+  //transition all ease-in-out .25s
+  position relative
+.menu__item-content
+  padding 16px 0px
+
+
+.menu__item > .list > .menu__item
+  padding 0px
+  padding-left 8px
+.menu__item > .list > .menu__item > .menu__item-link-content > .menu__item-content
+  padding 8px 0
+
+.menu__item-link-content > .menu__item-content
+  transition background-color ease time_default
+.menu__item-link-content > .menu__item-content:hover,.menu__item-link-content.menu__item-content_active > .menu__item-content
+  cursor pointer
+
+.menu__item-link-content > .menu__item-content > .menu__item-name
+  transition color ease time_default
+
+
+.menu__item-link-content > .menu__item-content > .menu__item-icon path
+  transition fill ease time_default
+
+
+
+.menu__item-icon > .nulled-icon
+  width 20px
+.menu__item-icon
+  max-width 20px
+  line-height 0
+  margin-left 16px
+.menu__item-name
+  margin 0 16px
+  font_text()
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+.menu__item-link-content:hover
+  text-decoration none
+
+
+.menu__item-link-content > .menu__item-content > .menu__item-arrow
+  transition transform ease time_default
+  transform rotate(0deg)
+.menu__item-link-content.menu__item-content_active > .menu__item-content > .menu__item-arrow
+  transform rotate(90deg)
+
+.menu__item-arrow > .nulled-icon
+  width 12px
+.menu__item-arrow
+  margin-right 16px
+  max-width 12px
+  line-height 0
+.menu__item-badge
+  text-align right
+  margin-right 16px
+  max-width 38px
+
+
+
+.menu__item-link-content + .list
+  height 0
+  overflow hidden
+  position relative
+  //display none
+.menu__item-link-content.menu__item-content_active + .list
+  overflow visible
+  height auto
+  //display block
+
+
+.menu_closed .menu__item-link-content + .list
+  display none
+.menu_closed .menu__item-link-content.menu__item-content_active + .list
+  display block
+
+
+.menu_closed .menu__item-content_first  .menu__item-arrow, .menu_closed .menu__item-content_first  .menu__item-name
+  display none
+
+.menu_closed .menu__item-content_first  .menu__item-badge .badge
+  padding 0
+  width 4px
+  height 4px
+  overflow hidden
+  text-indent -9999px
+  display block
+.menu_closed .menu__item-content_first .menu__item-badge span
+  display none
+.menu_closed .menu__item-content_first .menu__item-badge
+  position absolute
+  top 50%
+  margin-top -2px
+  width 4px
+  height 4px
+  margin-right 0
+
+
+.menu_closed.menu_right  .menu__item-content_first .menu__item-badge
+  left 8px
+.menu_closed.menu_left  .menu__item-content_first .menu__item-badge
+  right 8px
+
+.menu_closed .menu__item-content_first .menu__item-icon
+  transition max-width ease time_default // menu animation closing
+  max-width 100%
+  text-align center
+  margin-left 0
+
+
+.menu_closed.menu_right .menu__item-content > .menu__item-arrow, .menu_closed.menu_left .menu__item-content > .menu__item-arrow
+  transition transform ease-in-out time_default
+  transform rotate(90deg)
+.menu_closed.menu_right .menu__item-content_active > .menu__item-content > .menu__item-arrow
+  transform rotate(180deg)
+.menu_closed.menu_left .menu__item-content_active > .menu__item-content > .menu__item-arrow
+  transform rotate(0deg)
+.menu_closed .menu__item > .list > .menu__item
+  padding-left 0px
+
+
+
+
+.menu_closed .menu__item-link-content.menu__item-content_active + .list
+  position absolute
+  min-width 250px
+  border-radius 10px
+  padding 16px 0
+  top -7px
+.menu_closed .menu__item-link-content.menu__item-content_active + .list.menu__list-first-child
+  top 0
+  z-index 1002
+
+.menu_closed.menu_right .menu__item-link-content + .list
+  transition margin-right  ease-in-out time_default
+  margin-right 0
+.menu_closed.menu_right .menu__item-link-content.menu__item-content_active + .list
+  right 10px
+  margin-right 100%
+
+.menu_closed.menu_left .menu__item-link-content + .list
+  transition margin-left  ease-in-out time_default
+  margin-left 0
+.menu_closed.menu_left .menu__item-link-content.menu__item-content_active + .list
+  left 10px
+  margin-left 100%

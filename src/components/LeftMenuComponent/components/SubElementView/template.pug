@@ -1,0 +1,13 @@
+.sub-element-view
+  router-link(:to="element.link", v-if="isLink"): .row.sub-element.align-items-center
+    //:src="require('@assets/icons/'+element.icon)",
+    .col.sub-icon: IconElement(:src="element.icon").icon
+    .col.sub-text {{element.text}}
+
+  .row.sub-element.align-items-center(v-if="!isLink")
+    //:src="require('@assets/icons/'+element.icon)",
+    .col.sub-icon: IconElement(:src="element.icon").icon
+    .col.sub-text {{element.text}}
+    .col.sub-arrow
+      //@assets/icons/arrow-right.svg
+      IconElement(src="arrow-right").arrow-right

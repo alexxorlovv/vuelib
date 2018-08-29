@@ -1,0 +1,9 @@
+.my-test
+  .row(style="")
+    .col: button(v-tooltip="{placement:'left',enabled:true, theme: 'secondary'}", content="Left Tooltip") Left
+    .col: button(v-tooltip="{placement:'right',enabled:true, theme:'brand'}", content="Right Tooltip") Right
+    .col: button(v-tooltip="{'placement':placement,enabled:true, trigger: false, show:showTop, 'theme': theme}" :content="text") Random Tooltip
+    .col: button(v-tooltip="{placement:'bottom',enabled:true}", @click="toogleTop", content="Updating random tooltip") Random
+  .row
+    .col
+      FormTextElement()

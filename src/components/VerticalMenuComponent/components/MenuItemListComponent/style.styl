@@ -1,0 +1,21 @@
+@import "~@assets/theme/variables"
+@import "~@assets/theme/mixins"
+
+.menu__child-title
+  font_title()
+  padding 0 16px
+  padding-bottom 16px
+  text-overflow ellipsis
+  overflow hidden
+
+.menu__arrow
+  position absolute
+  top 0px
+  padding-top 30px
+  margin-top -15px
+  height calc(100% + 30px)
+
+.menu_closed.menu_left .menu__arrow
+  left -10px
+.menu_closed.menu_right .menu__arrow
+  right -10px

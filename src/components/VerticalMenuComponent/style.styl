@@ -1,0 +1,101 @@
+@import "~@assets/theme/variables"
+@import "~@assets/theme/mixins"
+
+
+.menu
+  z-index 10003
+  overflow hidden
+  transition max-width ease time_default
+
+.menu_closed
+  max-width 70px !important
+  overflow visible
+  //transition max-width ease time_default
+
+.menu__header
+  height 70px
+  margin 0
+
+.menu.menu_left .menu__header
+  justify-content flex-end
+.side-bar.menu_closed > .side-bar__container
+  width 100%
+
+.menu__button-toogle
+  max-width 24px
+
+.menu__button-container
+  max-width 40px
+  padding-right 0
+  padding-left 0
+.menu_left .menu__button-container
+  padding-right 16px
+.menu_right .menu__button-container
+  padding-left 16px
+.menu_closed .menu__button-container
+  max-width 100%
+  padding 0
+  display flex
+  justify-content center
+  transition max-width ease-in-out time_default
+
+.menu__title
+  font_title()
+  text-transform uppercase
+  padding-left 16px
+  padding-right 16px
+.menu_left .menu__title
+  text-align left
+.menu_right .menu__title
+  text-align right
+
+.menu__section
+  padding 8px 16px
+.menu__section-text
+  font_button_small()
+  display block
+
+.menu__section-icon
+  overflow hidden
+  height 0
+  width 16px
+  text-align center
+  transition width ease time_default // Section animation closing
+.menu__section-icon > .nulled-icon
+  width 16px
+
+.menu__section-text
+  width 100%
+.menu.menu_left .menu__item-content, .menu.menu_left .menu__section
+  display flex
+  justify-content flex-end
+
+.menu_closed .menu__section-text
+  display none
+.menu_closed .menu__section-icon
+  height auto
+  overflow visible
+  width 100%
+
+
+.menu .side-bar__content
+  padding-top 0px
+  padding-bottom 0px
+.menu__top-widget, .menu__bottom-widget
+  padding 16px
+  text-align center
+  display block
+
+.menu__widget-content
+  display block
+  padding 0
+  margin 0
+
+.menu_closed .menu__widget-content
+  display none
+
+
+
+
+
+@import "./responsive/style"

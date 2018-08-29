@@ -1,0 +1,56 @@
+@import "~@assets/theme/variables"
+@import "~@assets/theme/mixins"
+
+
+.sub-element > .sub-icon > .icon path
+  fill brand_normal
+.sub-element:hover > .sub-icon > .icon path
+  fill brand_hover
+.sub-elements-menu .sub-element
+  cursor pointer
+  // background-color secondary_border
+  margin 0
+  height 40px
+.sub-icon .icon
+  width 20px
+.sub-icon
+  padding-right 0
+  padding-left 8px
+  max-width 28px
+  min-width 28px
+  line-height 0
+.sub-arrow
+  text-align right
+  padding-left 0
+  max-width calc(14px + 32px)
+  padding-right 32px
+.sub-element > .sub-text
+  font_text()
+  color secondary_text
+.sub-element > .sub-text:hover, .sub-element > .sub-text:focus
+  font_text()
+  color secondary_light_text
+.sub-text
+  padding-left 16px
+  padding-right 16px
+.dropdown-menu-sub
+  padding-left 16px
+  display none
+.dropdown-menu-sub.opened
+  display block
+.dropdown.opened .col-arrow >.arrow-right
+  transform rotate(90deg)
+  transition all ease-out 0.25s
+.dropdown .col-arrow >.arrow-right
+  transition all ease-out 0.25s
+
+.leftmenu.closed .sub-element:focus > .col-text
+  padding-right 32px
+.leftmenu.closed .sub-element > .sub-icon
+  padding-left 8px
+.leftmenu.closed .sub-element > .sub-text
+  text-overflow ellipsis
+  overflow hidden
+
+
+@import './styles/responsive/style'

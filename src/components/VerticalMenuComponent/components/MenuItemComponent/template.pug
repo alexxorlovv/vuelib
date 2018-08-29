@@ -1,0 +1,40 @@
+ListItemElement.menu__item(v-tooltip="{enabled:!isShow && !isOpen && isFirst && !firstOpen, placement: placement == 'left' ? 'right' : 'left'}",
+                           :content="element.counter > 0 ? element.text+' ('+clearedCounter+')' :element.text",
+                          @keyup.self.native="keyUpHandler",
+                          @keydown.self.native="keyDownHandler",
+                           @mouseout.native="(!isOpen && isHover) ? mouseEnd($event): null",
+                           @mouseover.native="(!isOpen && isHover) ? mouseStart($event): null")
+  LinkElement(:to="element.sub.length > 0 ? '#!' : element.link",
+              :tag="element.sub.length > 0 ? 'div' : 'a'",
+              :disabled="element.sub.length > 0",
+              :class="[isShow ? 'menu__item-content_active' : '', isFirst ? 'menu__item-content_first' : '']").menu__item-link-content
+    .menu__item-content.row.no-gutters.align-items-center(@click="element.sub.length > 0 ? toogle() : ''", :class="[isActiveMenu ? 'menu__item_active' : null]")
+      .menu__item-icon.col.align-self-center
+        IconElement(v-if="element.icon",:src="element.icon")
+      .menu__item-name.col.align-self-center
+        LinkElement(:to="element.sub.length > 0 && element.isActiveLink ? element.link : '#!'",
+                  :tag="element.sub.length > 0 && element.isActiveLink ? 'a' : 'span'",
+                  :disabled="element.sub.length > 0 && element.isActiveLink ? false : true").menu__item-name-link {{element.text}}
+      .menu__item-badge.col.align-self-center
+        BadgeElement(:theme="element.counterTheme ? element.counterTheme: 'danger'" v-if="element.counter > 0") {{element.counter > 99 ? '99+' : element.counter}}
+      .menu__item-arrow.col.align-self-center(v-if="element.sub.length > 0")
+        IconElement(src="arrow-right")
+  CollapseTransitionElement(v-if="element.sub.length > 0" :enabled="isOpen")
+    keep-alive: MenuItemListComponent(:elements="element.sub",
+                          :theme="theme"
+                          :isOpen="isOpen",
+                          @fullCloseEvent="fullCloseEventHandler"
+                          @parentCloseEvent="parentCloseEventHandler",
+                          @closeChildrenEvent="closeChildrenHandler",
+                          :isCloseChildrenProp="isCloseChildren",
+                          @diactiveMenuEvent="diactiveMenuHandler",
+                          :isDiactiveMenu="isDiactiveMenu",
+                          @activeMenuEvent="activeMenuHandler",
+                          :isHover="true",
+                          :text="element.text",
+                          :isFirstChild="isFirst",
+                          :isFirst="false",
+                          :firstOpen="firstOpen",
+                          :placement="placement",
+                          :isClose="isClose",
+                          v-if="isShow").collapse-transition

@@ -1,0 +1,107 @@
+@import "~@assets/theme/variables"
+@import "~@assets/theme/mixins"
+
+
+.collapse-transition
+    transition: .2s height ease-in-out, .2s padding-top ease-in-out, .2s padding-bottom ease-in-out;
+// .collapse-enter
+//   padding-top 0
+//   height 0
+//   overflow hidden
+//   //visibility hidden
+// .collapse-enter-active
+//   //padding-top 100%
+//   //visibility visible
+//   transition height ease-out 1s
+// .collapse-enter-to
+//   height auto
+//   //transition all ease-out 0.25s
+//   //height 120px
+// .collapse-leave
+//   height auto
+// .collapse-leave-active
+//   height 0
+//   overflow visible
+//   visibility visible
+// .collapse-leave-to
+//   height 0
+//   overflow hidden
+
+.dropdown-header
+  font_title()
+  color brand_normal
+  padding 0
+  text-overflow ellipsis
+  overflow hidden
+  padding-right 32px
+  padding-left 8px
+  padding-bottom 8px
+  padding-top 8px
+.dropdown-menu-elem
+  //height 0
+  padding-left 32px
+  background-color secondary_border
+  width 100%
+  //transition all ease-out 0.25s
+  //top -56px
+  //display none
+.dropdown-menu-elem.opened
+  //display block
+  //transition all ease-out 0.25s
+.leftmenu.closed .dropdown-menu-elem
+  display none
+.leftmenu.closed .dropdown-menu-elem.opened
+  display block
+//.dropdown-menu-elem.opened
+  //display block
+
+  //transform translateY(56px)
+ // transition all ease-out 0.25s
+.sub-dropdown  .dropdown-menu-elem
+  padding-left 8px
+.leftmenu.closed .dropdown-menu-elem
+  padding-left 8px
+  padding-right 0px
+  padding-top 16px
+  padding-bottom 16px
+// .leftmenu.closed .dropdown .dropdown-menu-elem > .dropdown-header
+//   padding-top 16px
+//   padding-left 16px
+//   padding-right 16px
+
+// .leftmenu.closed .dropdown .dropdown-menu-elem > .dropdown-item
+//   padding-left 16px
+//   padding-right 16px
+
+
+
+
+.dropdown
+  position relative
+.leftmenu.closed .dropdown.opened > .dropdown-menu-elem.opened
+  position absolute
+  top -8px
+  left 100%
+  z-index 1
+  width 280px
+  border-radius 10px
+  margin-left 8px
+.carret-margin
+  width 8px
+.leftmenu.closed .sub-dropdown > .dropdown.opened  > .dropdown-menu-elem.opened > .margin > .carret-margin
+  margin-top 32px
+.leftmenu.closed .dropdown.opened  > .dropdown-menu-elem.opened > .margin > .carret-margin
+  margin-top 42px
+.margin
+  display none
+.leftmenu.closed .dropdown.opened > .dropdown-menu-elem.opened > .margin
+  display block
+  width 8px
+  position absolute
+  height calc(100% + 32px)
+  left -8px
+  top -16px
+
+@import './styles/responsive/style'
+
+

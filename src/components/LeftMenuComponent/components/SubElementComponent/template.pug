@@ -1,0 +1,9 @@
+.dropdown(v-if="element.sub.length > 0", :class="[dropdown ? 'opened' : '']", @mouseout="(isHover && !isOpen) ? mouseEnd($event): ''", @mouseover="(isHover && !isOpen) ? mouseStart($event) : ''")
+  .control-element(@click="[(!isHover && !isOpen) ? toogleDropdown($event) : '',(isOpen) ? toogleDropdown($event) : '']")
+    ElementView(:element="element", :isClose="isClose", :isSubElement="isSubElement"  :isFocus="dropdown", :isOpen="isOpen", :isLink="false")
+  transition(name="custom",  @before-enter="beforeEnter",@enter="enter",@after-enter="afterEnter",@before-leave="beforeLeave",@leave="leave",@after-leave="afterLeave",  @:leave-cancelled="leaveCancelled"): .dropdown-menu-elem(:class="[dropdown ? 'opened' : '', isOpen ? 'collapse-transition' : '']",  v-show="dropdown")
+    .margin: IconElement(src="carret").carret-margin
+    .dropdown-header(v-if="!isOpen") {{element.text}}
+    .dropdown-item(v-for="(s,index) in element.sub", :key="index")
+      SubElementView(v-if="s.sub.length == 0", :element="s", :isClose="isClose", :isOpen="isOpen", :isLink="s.sub.length == 0")
+      .sub-dropdown: SubElementComponent(@closeChildrenEvent="closeChildrenHandler", :isCloseChildrenProp="isCloseChildren", v-if="s.sub.length > 0", :isHover="true", :isSubElement="true", :isClose="isClose", :element="s", :isOpen="isOpen")

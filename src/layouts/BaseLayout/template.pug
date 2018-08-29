@@ -1,0 +1,32 @@
+.container-fluid(style="height:auto;")
+  .backdrop-menu(v-show="isOpen", @click="toogle")
+  .row(style="height:auto;")
+    VerticalMenuComponent(placement="left",
+                          position="static",
+                          :dataMenu="dataMenu",
+                          :keyControl="keyControl",
+                          @keyControlOffEvent="keyControlOffHandler",
+                          :isOpenProp="isOpen",
+                          @changeMenu="changeMenuCallback",
+                          v-shortkey="{toogle:['ctrl', 'm'], focus:['meta','m','ctrl'], rusFocus:['meta', 'ь', 'ctrl'], toogleRus:['ctrl', 'ь']}",
+                          @shortkey.native="keyMenu")
+      //- template(slot="top-widget")
+      //-   input(type="text", placeholder="search...")
+      //- template(slot="bottom-widget")
+      //-   p Copyright alexxorlovv@2018
+    //LeftMenuComponent
+    .col.col-container
+      HeaderComponent
+        .openMenu(@click="toogle") toogle Menu
+      FooterComponent
+      .content
+        slot
+    //- VerticalMenuComponent(placement="right",
+    //-                       position="static",
+    //-                       :dataMenu="dataMenu",
+    //-                       :keyControl="keyControl",
+    //-                       @keyControlOffEvent="keyControlOffHandler",
+    //-                       :isOpenProp="isOpen",
+    //-                       @changeMenu="changeMenuCallback",
+    //-                       v-shortkey="{toogle:['ctrl', 's'], focus:['meta','s','ctrl']}",
+    //-                       @shortkey.native="keyMenu")

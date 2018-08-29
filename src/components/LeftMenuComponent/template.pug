@@ -1,0 +1,16 @@
+.menu-panel
+  .backdrop(v-show="isOpen" @click="toogle")
+  .col.leftmenu(:class="[isOpen ? openClass : closeClass]")
+    .leftmenu-container(:class="[isOpen ? openClass : closeClass]")
+      .row.control.row-control.align-items-center
+        .col.title Dashboard System
+        .col.col-toogle(style="display: flex; justify-content:center;")
+          .hamburger.hamburger_size_default.hamburger_theme_brand.toogle(@click="toogle")
+            .hamburger__top-bun
+            .hamburger__meat
+            .hamburger__bottom-bun
+
+      .elements(v-if="elements.length > 0")
+        ElementComponent(@closeChildrenEvent="closeChildrenHandler", :isCloseChildrenProp="isCloseChildren", v-for="(element, index) in elements", :element="element", :isHover="false", :isClose="isClose", :key="index", :isOpen="isOpen")
+      .sections(v-if="sections.length > 0")
+        SectionComponent(v-for="(section, index) in sections", :section="section", :key="index", :isHover="false", :isClose="isClose", :isOpen="isOpen", @closeChildrenEvent="closeChildrenHandler", :isCloseChildrenProp="isCloseChildren" )

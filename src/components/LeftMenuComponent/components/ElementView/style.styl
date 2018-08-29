@@ -1,0 +1,153 @@
+@import "~@assets/theme/variables"
+@import "~@assets/theme/mixins"
+
+
+
+// .router-link-active .element
+//   background-color red
+//   transition all ease-out 0.25s
+// .element .router-link-active
+
+.col-icon
+  text-align center
+  line-height 0
+// .element > .col-icon > .icon
+//   height 24px
+.element > .col-arrow > .arrow-right path, .element > .col-icon > .icon path
+  transition all ease 0.25s
+  fill brand_normal
+.element:hover > .col-arrow > .arrow-right path, .element:hover > .col-icon > .icon path
+  transition all ease 0.25s
+  fill brand_hover
+.element
+  cursor pointer
+  width 100%
+  height 46px
+  padding 0
+  margin 0
+  background none
+  transition background ease-out 0.25s
+.element:hover
+  background-color secondary_border
+  transition all ease-out 0.25s
+.element.focus
+  background-color secondary_border
+// .leftmenu.closed .element
+//   width 100%
+//   height 70px
+.leftmenu.closed .element > .col-text
+  display none
+
+.leftmenu.opened .element > .col-text, .leftmenu.closed .sub-dropdown .element > .col-text
+  display block
+  padding-left 0px
+  padding-right 32px
+.leftmenu.opened .element > .col-arrow, .leftmenu.closed .sub-dropdown .element > .col-counter, .leftmenu.closed .sub-dropdown .element > .col-arrow
+  display block
+.leftmenu.closed .element > .col-arrow
+  display none
+
+
+.icon
+  width 24px
+.leftmenu.closed .element > .col-icon
+  text-align center
+.leftmenu.opened .element > .col-icon, .leftmenu.closed .sub-dropdown .element > .col-icon
+  max-width 24px
+  padding 0
+  margin-left 32px
+  margin-right 16px
+  text-align center
+a:hover
+  text-decoration none
+
+.text
+  color secondary_text
+  text-decoration none
+  text-transform none
+  text-align left
+  font_text()
+.text:hover
+  text-decoration none
+  color secondary_text
+.col-arrow
+  padding-left 0
+  padding-right 32px
+  text-align right
+  max-width 44px
+.arrow-down
+  display none
+.col-counter
+  padding-right 10px
+  padding-left 0
+.col-not-sub
+  padding-right 32px
+.counter
+  float right
+  font_text_small()
+  border-radius 100px
+  background-color danger_normal
+  color white
+  line-height 20px
+  padding-right 8px
+  padding-left 8px
+  text-align center
+  height 20px
+  display inline-block
+
+.arrow-right
+  width 12px
+
+.sub-dropdown .element
+  height 40px
+  background none
+.sub-dropdown .element:hover .text
+  background none
+  color secondary_light_text
+.leftmenu .sub-dropdown .element > .col-icon
+  margin-left 8px !important
+  max-width 20px !important
+.leftmenu .sub-dropdown .element > .col-icon .icon
+  max-width 20px !important
+.leftmenu.opened .element.focus > .col-arrow > .arrow-right
+  transform rotate(90deg)
+  transition all ease-out 0.25s
+.leftmenu.opened .element > .col-arrow > .arrow-right
+  transform none
+  transition all ease-out 0.25s
+
+.leftmenu.closed .element.focus > .col-arrow > .arrow-right
+  transform rotate(0deg)
+  transition all ease-out 0.25s
+.leftmenu.closed .element > .col-arrow > .arrow-right
+  transform rotate(90deg)
+  transition all ease-out 0.25s
+.leftmenu.closed .element:focus > .col-text
+  padding-right 32px
+.leftmenu.closed .element > .col-icon
+  margin-left 0px
+.leftmenu.closed .element > .col-text
+  text-overflow ellipsis
+  overflow hidden
+// .element
+//   position relative
+//   z-index 1
+// .leftmenu.closed .element > .col-arrow
+//     max-width 30px
+//   padding-right 16px
+
+.element
+  position relative
+.leftmenu.closed .element > .col-counter
+  position absolute
+  top 50%
+  margin-top -1px
+  right -25px
+.leftmenu.closed .element > .col-counter > .counter
+  padding 0
+  overflow hidden
+  text-indent -9999px
+  width 4px
+  height 4px
+
+@import './styles/responsive/style'

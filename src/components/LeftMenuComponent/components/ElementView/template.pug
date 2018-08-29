@@ -1,0 +1,17 @@
+//v-b-tooltip.right.hover="!isOpen && !isFocus && !isSubElement ? element.text : ''"
+.element-view()
+  router-link(:to="element.link", v-if="isLink"): .element.row.align-items-center(:class="[isFocus ? 'focus' : '']")
+    //:src="require('@assets/icons/'+element.icon)",
+    .col.col-icon: IconElement(:src="element.icon").icon
+    .col.col-text: .text {{element.text}}
+    .col-2.col-counter.col-not-sub(v-if="element.counter > 0"): .counter {{element.counter > 99 ? '99+' : element.counter}}
+
+  .element.row.align-items-center(v-if="!isLink", :class="[isFocus ? 'focus' : '']")
+    //:src="require('@assets/icons/'+element.icon)",
+    .col.col-icon: IconElement(:src="element.icon").icon
+    .col.col-text: .text {{element.text}}
+    .col-2.col-counter.col-not-sub(v-if="element.counter > 0"): .counter {{element.counter > 99 ? '99+' : element.counter}}
+    .col-2.col-arrow
+      //@assets/icons/arrow-right.svg
+      IconElement(src="arrow-right").arrow-right
+

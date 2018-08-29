@@ -1,0 +1,65 @@
+SideBarElement.menu(:class="classObject", v-abroad:body="close" @click.native="keyControlOff")
+  template(slot="header")
+    .row.align-items-center.menu__header
+      .col.menu__title(:class="placement === 'right' ? 'order-3' : 'order-1' " v-show="isOpen") Dashboard System
+      .col.order-2.menu__button-container
+        .hamburger.hamburger_size_default.hamburger_theme_brand.menu__button-toogle(@click="toogle")
+          .hamburger__top-bun
+          .hamburger__meat
+          .hamburger__bottom-bun
+  template(slot="content")
+    .menu__top-widget
+      .menu__widget-content
+        slot(name="top-widget")
+    .menu__elements
+      MenuItemListComponent(:elements="sortedTopMenu",
+                            :isFirst="true",
+                            :isOpen="isOpen",
+                            :placement="placement",
+                            :isClose="isClose",
+                            :theme="theme",
+                            :firstOpen="firstOpen",
+                            @firstOpenEvent="firstOpenEventHandler",
+                            @firstCloseEvent="firstCloseEventHandler",
+                            @diactiveMenuEvent="diactiveMenuHandler",
+                            :isDiactiveMenu="isDiactiveMenu",
+                            @fullCloseEvent="fullCloseEventHandler",
+                            @closeChildrenEvent="closeChildrenHandler",
+                            :isCloseChildrenProp="isCloseChildren")
+    .menu__sections(v-for="(section, sectionName, index) in sortedSections")
+      .menu__section
+        .menu__section-text {{sectionName}}
+        .menu__section-icon: IconElement(src="more")
+      MenuItemListComponent(:elements="section",
+                            :isFirst="true",
+                            :isOpen="isOpen",
+                            :placement="placement",
+                            :isClose="isClose",
+                            :theme="theme",
+                            :firstOpen="firstOpen",
+                            @firstOpenEvent="firstOpenEventHandler",
+                            @firstCloseEvent="firstCloseEventHandler",
+                            @diactiveMenuEvent="diactiveMenuHandler",
+                            :isDiactiveMenu="isDiactiveMenu",
+                            @fullCloseEvent="fullCloseEventHandler",
+                            @closeChildrenEvent="closeChildrenHandler",
+                            :isCloseChildrenProp="isCloseChildren")
+    .menu__elements
+      MenuItemListComponent(:elements="sortedBottomMenu",
+                            :isFirst="true",
+                            :isOpen="isOpen",
+                            :placement="placement",
+                            :isClose="isClose",
+                            :theme="theme",
+                            :firstOpen="firstOpen",
+                            @firstOpenEvent="firstOpenEventHandler",
+                            @firstCloseEvent="firstCloseEventHandler",
+                            @diactiveMenuEvent="diactiveMenuHandler",
+                            :isDiactiveMenu="isDiactiveMenu",
+                            @fullCloseEvent="fullCloseEventHandler",
+                            @closeChildrenEvent="closeChildrenHandler",
+                            :isCloseChildrenProp="isCloseChildren")
+    .menu__bottom-widget
+      .menu__widget-content
+        slot(name="bottom-widget")
+  template(slot="footer")
