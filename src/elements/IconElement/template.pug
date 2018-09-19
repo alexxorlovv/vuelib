@@ -1,1 +1,4 @@
-div(v-once, v-html="require('@assets/icons/'+src+'.icon')", :class="[classIcon]", :style="styles")
+//- div(v-once, :class="[classIcon]", :style="styles")
+svg(v-once, :viewBox="icon.viewBox", :class="[classIcon]", :style="styles")
+  use(:xlink:href="icon.url")
+

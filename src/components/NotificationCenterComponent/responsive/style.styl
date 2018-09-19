@@ -1,0 +1,16 @@
+@media (max-width: 576px)
+  .notification-center-wrapper
+    flex-wrap wrap
+  .notification-center-wrapper__left,.notification-center-wrapper__right,.notification-center-wrapper__center
+    flex-grow 1
+  .notification-center-wrapper .alert
+    max-width 100%
+@media (min-width: 576px) and (max-width: 767px)
+  @import "./sm"
+@media (min-width: 768px) and (max-width: 991px)
+  @import "./md"
+@media (min-width: 992px) and (max-width: 1199px)
+  @import "./lg"
+@media (min-width: 1200px)
+  @import "./elg"
+

@@ -4,6 +4,8 @@
 import 'vue2-animate/dist/vue2-animate.min.css'
 import 'bootstrap/dist/css/bootstrap-reboot.min.css'
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
+import 'animate.css/animate.min.css'
+
 
 import './assets/base.styl'
 import Vue from 'vue'
@@ -28,6 +30,13 @@ import Abroad from './directives/Abroad'
 import shortKey from 'vue-shortkey'
 import VueHotkey from 'v-hotkey'
 import LinkElement from '@elements/LinkElement.vue'
+import IconElement from '@elements/IconElement.vue'
+import DynamicIconElement from '@elements/DynamicIconElement.vue'
+import ButtonElement from '@elements/ButtonElement.vue'
+import AlertElement from '@elements/AlertElement.vue'
+import ButtonGroupElement from '@elements/ButtonGroupElement.vue'
+import NotifyPlugin from '@/plugins/notify'
+
 Vue.use(VueHotkey)
 Vue.use(shortKey)
 Vue.use(VueLodash, _)
@@ -38,13 +47,21 @@ Vue.use(Router)
 
 
 Vue.component("LinkElement", LinkElement)
+Vue.component("DynamicIconElement", DynamicIconElement)
+Vue.component("IconElement", IconElement)
+Vue.component("ButtonElement", ButtonElement)
+Vue.component("ButtonGroupElement", ButtonGroupElement)
+Vue.component("AlertElement", AlertElement)
+
 
 declare module 'vue/types/vue' {
   // 3. Объявите расширение для Vue
   interface Vue {
     _: any,
     menuTimeoutTimer: any,
-    menuTimeoutEnabled: any
+    menuTimeoutEnabled: any,
+    set<T>(object: object, key: symbol, value: T): T;
+
   }
   interface VueRouter {
     options: any,
@@ -52,6 +69,11 @@ declare module 'vue/types/vue' {
   }
   interface VueClass<Vue> {
     components: any
+
+  }
+  interface VueConstructor<V extends Vue = Vue>{
+    set<T>(object: object, key: symbol, value: T): T;
+   // set<T>(array: T[], key: number, value: T): T;
   }
 }
 let router = new Router(routerData)
@@ -108,6 +130,8 @@ unbind: вызывается однократно, при отвязывании
 */
 
 
+Vue.use(NotifyPlugin, {})
+
 Vue.directive("tooltip", Tooltip)
 Vue.directive("abroad", Abroad)
 
@@ -133,7 +157,7 @@ Vue.use(VueRouterTitle, {
 
 
 
-new Vue({
+let rootVue = new Vue({
   el: '#app',
   http: {
     root: '/root',
@@ -146,4 +170,3 @@ new Vue({
   template: '<Main/>',
   components: { Main }
 })
-

@@ -5,7 +5,7 @@ import SignInPage from '@pages/SignInPage.vue'
 import SignOutPage from '@pages/SignUpPage.vue'
 import DashboardPage from '@pages/DashboardPage.vue'
 import IndexPage from '@pages/IndexPage.vue'
-
+import ButtonsPage from '@pages/ButtonsPage.vue'
 import { RouterMode } from 'vue-router/types'
 //import BaseRouters from '@applications/Base/router.ts'
 
@@ -22,6 +22,11 @@ export default {
       component: IndexPage,
       meta: { menu: { verticalMenu: { position: "top", sort: 2 } }, icon: "menu", title: "dashboard", isActiveLink: true },
       children: [
+        {
+          path: 'buttons',
+          component: ButtonsPage,
+          meta: {title: "buttons", menu: {verticalMenu:{position: "top"}}}
+        },
         {
           path: 'dashboard',
           component: DashboardPage,

@@ -189,9 +189,6 @@ export default class Main extends Vue {
   }
   created() {
     let result = this.renderRoutesList(this.$router.options.routes)
-    console.log(result)
-   // console.log(routes);
-    //let elem:any = { name: "VerticalMenu", data:[]}
     for(let renderName in result) {
       let elem = {name: renderName, data: result[renderName]}
       this.addMenu(elem)
@@ -199,20 +196,7 @@ export default class Main extends Vue {
 
   }
 
- // {
-//   title: "Menu Name",
-//   icon: "base/menu",
-//   counter: 1,
-//   counterTheme: "brand"
-//   isActiveLink: true
-//   menu: {
-//     verticalMenu: {
-//       sort:0,
-//       position: "section",
-//       sectionName: "Accounts"
-//     }
-//   }
-// }
+
 
 
   mounted(){

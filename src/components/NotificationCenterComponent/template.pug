@@ -1,0 +1,26 @@
+.notification-center-wrapper
+  TransitionGroup(v-for="(position, i) in notifyPositions",
+                  :key="i",
+                  tag="div",
+                  :class="['notification-center', 'notification-center_position_'+position]"
+                  :enter-active-class="'animated faster '+namesNotification[position].enter",
+                  :leave-active-class="'animated faster '+namesNotification[position].leave")
+    AlertElement(v-for="(alert, index) in getStorage(position)",
+                :key="alert.id",
+                :title="alert.title",
+                style="animation-duration: .5s",
+                :theme="alert.theme",
+                :icon="alert.settings.icon",
+                :iconType="alert.settings.iconType",
+                :type="alert.settings.type",
+                :isClose="alert.settings.isClose",
+                :border="alert.settings.border",
+                :buttons="alert.settings.buttons",
+                @closeEvent="closeHandler(alert)",
+                :isCloseEvent="true") {{alert.message}}
+
+
+
+
+
+

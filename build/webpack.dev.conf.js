@@ -7,6 +7,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const SpritePlugin = require('svg-sprite-loader/lib/plugin')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -35,6 +36,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+
     new webpack.ProvidePlugin({
          $: "jquery/dist/jquery.min.js",
          jQuery: "jquery/dist/jquery.min.js",
@@ -52,6 +54,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
+    new SpritePlugin({
+      plainSprite: true
+    })
   ]
 })
 

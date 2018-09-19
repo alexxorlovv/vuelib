@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
+declare var require: any
 @Component({
     components: {
     },
@@ -19,7 +20,8 @@ import Component from 'vue-class-component'
       },
       height: {
         type: String,
-        required:false
+        required:false,
+        //default: "15px"
       }
     }
 })
@@ -28,7 +30,9 @@ class IconElement extends Vue {
   name: string = "IconElement"
   height?: string;
   width?: string;
-
+  src: string;
+  classIcon: string;
+  icon: any;
   get styles() {
     let styles: any = {}
     if(this.height) {
@@ -39,7 +43,10 @@ class IconElement extends Vue {
     }
     return styles
   }
-}
+  created(){
+    this.icon  = require(`@assets/icons/${this.src}.svg`).default
+  }
 
+}
 export default IconElement
 

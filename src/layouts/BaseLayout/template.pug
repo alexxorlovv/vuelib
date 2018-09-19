@@ -17,7 +17,7 @@
     //LeftMenuComponent
     .col.col-container
       HeaderComponent
-        .openMenu(@click="toogle") toogle Menu
+        ButtonElement(icon="menu", type="outline", border="box", :contentOnly="true", @click.native="toogle")
       FooterComponent
       .content
         slot

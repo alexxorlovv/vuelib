@@ -1,0 +1,159 @@
+@import "~@assets/theme/variables"
+@import "~@assets/theme/mixins"
+
+
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.notification-center > .alert
+  max-width 600px
+
+.notification-center_position_left-top
+  left 0
+  top 0
+.notification-center_position_left-bottom
+  left 0
+  bottom 0
+
+.notification-center_position_right-top
+  right 0
+  top 0
+.notification-center_position_right-bottom
+  right 0
+  bottom 0
+
+.notification-center_position_right-bottom > .alert,
+.notification-center_position_center-bottom > .alert,
+.notification-center_position_left-bottom > .alert,
+.notification-center_position_right-center > .alert,
+.notification-center_position_center-center > .alert,
+.notification-center_position_left-center > .alert
+  margin-top 10px
+.notification-center_position_right-bottom > .alert:first-child,
+.notification-center_position_center-bottom > .alert:first-child,
+.notification-center_position_left-bottom > .alert:first-child,
+.notification-center_position_right-center > .alert:first-child,
+.notification-center_position_center-center > .alert:first-child,
+.notification-center_position_left-center > .alert:first-child
+  margin-top 0
+
+.notification-center_position_right-top > .alert,
+.notification-center_position_left-top > .alert,
+.notification-center_position_center-top > .alert
+  margin-bottom 10px
+
+.notification-center_position_right-top > .alert:last-child,
+.notification-center_position_left-top > .alert:last-child,
+.notification-center_position_center-top > .alert:last-child
+  margin-bottom 0px
+
+.notification-center_position_right-center
+  right 0
+  top 50%
+  transform translate(0, -50%)
+
+.notification-center_position_left-center
+  left 0
+  top 50%
+  transform translate(0, -50%)
+
+
+.notification-center_position_center-top
+  top 0
+  left 50%
+  transform translate(-50%, 0)
+
+.notification-center_position_center-bottom
+  bottom 0
+  left 50%
+  transform translate(-50%, 0)
+
+.notification-center_position_center-center
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
+
+.notification-center
+  z-index 999999999999999
+  position absolute
+  padding 20px
+
+// .notification-center-wrapper .alert
+//   max-width 300px
+// .notification-center-wrapper
+//   position absolute
+//   display flex
+//   flex-flow row nowrap
+//   z-index 999999999999999
+//   width 100%
+//   align-content stretch
+//   height 100%
+//   justify-content space-between
+// .notification-center-wrapper__left,.notification-center-wrapper__right,.notification-center-wrapper__center
+//   // flex-grow 1
+//   display flex
+//   flex-flow column nowrap
+//   justify-content space-between
+//   padding 20px
+
+// .notification-center-wrapper__left > .notification-center_position_top > div
+//   margin-bottom 10px
+// .notification-center-wrapper__left > .notification-center_position_center > div
+//   margin-top 10px
+// .notification-center-wrapper__left > .notification-center_position_bottom > div
+//   margin-top 10px
+
+
+
+// .notification-center-wrapper__center > .notification-center_position_top > div
+//   margin-bottom 10px
+// .notification-center-wrapper__center > .notification-center_position_center > div
+//   margin-top 10px
+// .notification-center-wrapper__center > .notification-center_position_bottom > div
+//   margin-top 10px
+
+
+// .notification-center-wrapper__right > .notification-center_position_top > div
+//   margin-bottom 10px
+// .notification-center-wrapper__right > .notification-center_position_center > div
+//   margin-top 10px
+// .notification-center-wrapper__right > .notification-center_position_bottom > div
+//   margin-top 10px
+
+
+
+
+
+//.notification-center-wrapper__left
+//.notification-center-wrapper__right
+
+
+// .notification-center
+//   position absolute
+//   display flex
+//   flex-flow column nowrap
+//   z-index 999999999999999
+
+// .notification-center_position_bottom-center
+// .notification-center_position_bottom-left
+//   bottom 10px
+//   left 10px
+// .notification-center_position_bottom-right
+//   bottom 10px
+//   left 10px
+// .notification-center_position_top-center
+//   top: 10px;
+//   justify-content center
+
+// .notification-center_position_top-left
+//   top 10px
+//   left 10px
+// .notification-center_position_top-right
+//   top 10px
+//   right 10px
+@import "./responsive/style"

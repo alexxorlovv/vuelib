@@ -1,0 +1,15 @@
+.row
+  .col
+    ButtonElement(:theme="theme",
+              :size="size",
+              :type="type",
+              :border="border",
+              :icon="icon",
+              :iconDynamic="true",
+              :iconPosition="iconPosition",
+              display="inline-block",
+              state="default",
+              :disabled="false",
+              :isLink="false"
+              :contentOnly="false",
+              @click.native="randomButton"): span(v-if="content.length > 0") {{content}}

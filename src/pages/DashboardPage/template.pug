@@ -5,5 +5,75 @@
     .col: button(v-tooltip="{'placement':placement,enabled:true, trigger: false, show:showTop, 'theme': theme}" :content="text") Random Tooltip
     .col: button(v-tooltip="{placement:'bottom',enabled:true}", @click="toogleTop", content="Updating random tooltip") Random
   .row
-    .col
-      FormTextElement()
+    .col(style="margin-top:50px;")
+      ///FormElement()
+      FormElement()
+      AlertElement(type="fill", :isClose="true" iconType="outline" :buttons="buttons" theme="primary", title="Оповещение!") Появилось обновление статистических данных. - обновить в локальной базе?
+      div(style="margin:100px;")
+      //- .row: ButtonElement(theme="whetey",
+      //-               size="default",
+      //-               type="fill",
+      //-               border="curved",
+      //-               :icon="icon",
+      //-               :iconDynamic="true",
+      //-               iconPosition="left",
+      //-               display="inline-block",
+      //-               state="default",
+      //-               :disabled="false",
+      //-               :isLink="false",
+      //-               :contentReverseNormal="false",
+      //-               :contentReverseHover="false",
+      //-               :contentReverseActive="false",
+      //-               theme_normal_wrapper="danger",
+      //-               theme_hover_wrapper="focus",
+      //-               theme_active_wrapper="info",
+      //-               theme_normal_content="success",
+      //-               theme_hover_content="warning",
+      //-               theme_active_content="secondary",
+      //-               :contentOnly="false") Home
+      //- .row: ButtonElement(theme="whitey",
+      //-               size="default",
+      //-               type="outline",
+      //-               border="curved",
+      //-               :icon="icon",
+      //-               :iconDynamic="true",
+      //-               iconPosition="left",
+      //-               display="inline-block",
+      //-               state="default",
+      //-               :disabled="false",
+      //-               :isLink="false",
+      //-               :contentReverseNormal="true",
+      //-               :contentReverseHover="true",
+      //-               :contentReverseActive="true",
+      //-               theme_hover_content="primary",
+      //-               theme_normal_content="whitey",
+      //-               theme_active_content="whitey",
+      //-               theme_active_wrapper="focus",
+      //-               :contentOnly="false") Home
+
+      ButtonGroupElement(placement="vertical", theme="danger",
+                    size="default",
+                    type="outline",
+                    border="curved",
+                    :iconDynamic="true",
+                    iconPosition="left",
+                    state="default",
+                    :disabled="false",
+                    :isLink="false",
+                    :contentReverseNormal="true",
+                    :contentReverseHover="true",
+                    :contentReverseActive="true",
+                    theme_hover_content="primary",
+                    theme_normal_content="danger",
+                    theme_active_content="whitey",
+                    theme_active_wrapper="focus",
+                    :contentOnly="false")
+        ButtonElement(icon="menu") Home
+        ButtonElement(icon="menu") Home
+        ButtonElement(icon="menu") Home
+
+
+      ButtonElement(@click.native="notifier") Notify
+        //- ButtonElement(icon="menu", type="outline", style="margin-left:-1px;") Home
+        //- ButtonElement(icon="menu", type="outline", style="margin-left:-1px;") Home
+

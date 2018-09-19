@@ -36,14 +36,26 @@ module.exports = {
       '@filters': resolve('src/filters'),
       '@validators': resolve('src/validators'),
       '@assets': resolve('src/assets'),
+      '@plugins': resolve('src/plugins'),
     }
   },
   module: {
     rules: [
-     {
-      test: /\.(icon)$/,
-      loader: 'svg-inline-loader'
- },
+//      {
+//       test: /icons\/(-?\w\/?){0,}\.svg(\?.*)?$/,
+//       loader: 'svg-inline-loader'
+//  },
+      {
+        test: /icons\/(-?\w\/?){0,}\.svg(\?.*)?$/,
+        use: [{
+            loader: 'svg-sprite-loader',
+            options: {
+              extract: true
+            }
+          },
+          //'svgo-loader'
+        ]
+      },
 //     {
 //   test: /\.styl(us)?$/,
 //   use: [
@@ -94,7 +106,23 @@ module.exports = {
         include: [resolve('src'), resolve('test')]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        }
+      },
+      {
+        test: /loaders\/(-?\w\/?){0,}\.svg(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        }
+      },
+      {
+        test: /fonts\/(-?\w\/?){0,}\.svg(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,

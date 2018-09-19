@@ -4,8 +4,8 @@
 H1 -                 72px/110.8px - 5.14em/5.54em
 H2 -                  52px/80px - 3.71em/4.00em
 H3 -                  32px/49.2px - 2.29em/2.46em
-H4 -      26px/40px - 1.86em/2.00em
-Subheding #1  18px/27.7px - 1.28em/1.39em
+H4 -                  26px/40px - 1.86em/2.00em
+Subheding #1          18px/27.7px - 1.28em/1.39em
 Title                  16px/24.6px - 1.14em/1.23em
 Text                  14px/20px  - 1.00em/1.00em
 Button              12px/18.5px - 0.86em/0.93em
@@ -18,112 +18,172 @@ Button small 10px/15.4px - 0.71em/0.77em
 Buttom large 21.5px/33.1px - 1.54/1.66
 */
 
-ratio = 1.54
+$ratio = 1.54
+
+$font_size = 14
+
+$font_size_h1 = 72
+$font_size_h2 = 52
+$font_size_h3 = 32
+$font_size_h4 = 26
+$font_size_subheading = 18
+$font_size_title = 16
+$font_size_text = $font_size
+$font_size_text_small = 12
+$font_size_text_large = 21.5
+$font_size_button = 12
+$font_size_button_default = $font_size_button
+$font_size_button_small = 10
+$font_size_button_large = 21.5
+$font_size_tag = 10
+
+get_ratio_height($height)
+  ($height * $ratio)
+
+get_rem_ratio($height)
+  (get_ratio_height($height)/$font_size)
+get_rem($height)
+  ($height/$font_size)
 
 font_body()
   font-family displayFont
   font-style normal
   font-weight normal
-  line-height 20px
-  font-size 14px
+  line-height get_ratio_height($font_size)px
+  font-size ($font_size)px
   letter-spacing 0
 
 font_h1()
   font-family displayFont
   font-weight bold
   font-style normal
-  font-size 5.14rem
-  line-height 5.54rem
+  font-size get_rem($font_size_h1)rem
+  line-height get_rem_ratio($font_size_h1)rem
   letter-spacing 0
 font_h2()
   font-family displayFont
   font-weight lightWeight
   font-style normal
-  font-size 3.71rem
-  line-height 4rem
+  font-size get_rem($font_size_h2)rem
+  line-height get_rem_ratio($font_size_h2)rem
   letter-spacing 0
 font_h3()
   font-family displayFont
   font-weight lightWeight
   font-style normal
-  font-size 2.29rem
-  line-height 2.46rem
+  font-size get_rem($font_size_h3)rem
+  line-height get_rem_ratio($font_size_h3)rem
   letter-spacing 0
 font_h4()
   font-family displayFont
   font-weight lightWeight
   font-style normal
-  font-size 1.86rem
-  line-height 2rem
+  font-size get_rem($font_size_h4)rem
+  line-height get_rem_ratio($font_size_h4)rem
   letter-spacing 0
 font_subheding1()
   font-family displayFont
   font-weight mediumWeight
   font-style normal
-  font-size 1.28rem
-  line-height 1.39rem
+  font-size get_rem($font_size_subheading)rem
+  line-height get_rem_ratio($font_size_subheading)rem
   letter-spacing 0
 font_title()
   font-family displayFont
   font-weight normal
   font-style normal
-  font-size 1.14rem
-  line-height 1.23rem
+  font-size get_rem($font_size_title)rem
+  line-height get_rem_ratio($font_size_title)rem
   letter-spacing 0
 font_text()
   font-family displayFont
   font-weight normal
   font-style normal
-  font-size 1rem
-  line-height 1rem
+  font-size get_rem($font_size_text)rem
+  line-height get_rem_ratio($font_size_text)rem
   letter-spacing 0
 font_text_large()
   font-family displayFont
   font-weight normal
   font-style normal
-  font-size 1.54rem
-  line-height 1.66rem
+  font-size get_rem($font_size_text_large)rem
+  line-height get_rem_ratio($font_size_text_large)rem
   letter-spacing 0
 font_text_small()
   font-family displayFont
   font-weight normal
   font-style normal
-  font-size 0.86rem
-  line-height 0.92rem
+  font-size get_rem($font_size_text_small)rem
+  line-height get_rem_ratio($font_size_text_small)rem
   letter-spacing 0
 font_button()
   font-family displayFont
   font-weight mediumWeight
   font-style normal
-  font-size 0.86rem
-  line-height 0.93rem
+  font-size get_rem($font_size_button)rem
+  line-height get_rem_ratio($font_size_button)rem
+  text-transform uppercase
+  letter-spacing 0
+font_button_default()
+  font-family displayFont
+  font-weight mediumWeight
+  font-style normal
+  font-size get_rem($font_size_button)rem
+  line-height get_rem_ratio($font_size_button)rem
   text-transform uppercase
   letter-spacing 0
 font_button_small()
   font-family displayFont
   font-weight mediumWeight
   font-style normal
-  font-size 0.71rem
-  line-height 0.77rem
+  font-size get_rem($font_size_button_small)rem
+  line-height get_rem_ratio($font_size_button_small)rem
   text-transform uppercase
   letter-spacing 0
 font_button_large()
   font-family displayFont
   font-weight mediumWeight
   font-style normal
-  font-size 1.54rem
-  line-height 1.66rem
+  font-size get_rem($font_size_button_large)rem
+  line-height get_rem_ratio($font_size_button_large)rem
   text-transform uppercase
   letter-spacing 0
 font_tag()
   font-family displayFont
   font-weight mediumWeight
   font-style normal
-  font-size 0.71rem
-  line-height 0.77rem
+  font-size get_rem($font_size_tag)rem
+  line-height get_rem_ratio($font_size_tag)rem
   text-transform uppercase
   letter-spacing 0
 
 
 
-
+.font_body
+  font_body()
+.font_h1
+  font_h1()
+.font_h2
+  font_h2()
+.font_h3
+  font_h3()
+.font_h4
+  font_h4()
+.font_subheding1
+  font_subheding1()
+.font_title
+  font_title()
+.font_text_default
+  font_text()
+.font_text_large
+  font_text_large()
+.font_text_small
+  font_text_small()
+.font_button_default
+  font_button()
+.font_button_small
+  font_button_small()
+.font_button_large
+  font_button_large()
+.font_tag
+  font_tag()
