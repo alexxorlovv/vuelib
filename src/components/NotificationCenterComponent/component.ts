@@ -31,41 +31,7 @@ class Stack
 
     },
     props: {
-      // position: {
-      //   type: String,
-      //   required: false,
-      //   default: "bottom-right",
-      //   validator: function (value: string): boolean {
-      //     return [
-      //       'top-center', 'bottom-center', 'top-left', 'top-right', 'bottom-left', 'bottom-right', 'center-center', 'center-right', 'center-left'
-      //     ].indexOf(value) !== -1
-      //   }
-      // },
-      // zIndex: {
-      //   type: String,
-      //   required: false,
-      //   default: "9999999999"
-      // },
-      // newestOnTop:{
-      //   type: Boolean,
-      //   required: false,
-      //   default: false
-      // },
-      // offsetX: {
-      //   type: String,
-      //   required: false,
-      //   default: "20px"
-      // },
-      // offsetY: {
-      //   type: String,
-      //   required: false,
-      //   default: "20px"
-      // },
-      // spacing: {
-      //   type: String,
-      //   required: false,
-      //   default: "10px"
-      // },
+
     }
 })
 
@@ -75,17 +41,17 @@ export default class NotificationCenterComponent extends Vue {
 
   opts: NotificationOptions
 
-  leftTopNotifications:any = {}
-  leftCenterNotifications:any = {}
-  leftBottomNotifications:any = {}
+  leftTopNotifications:any = []
+  leftCenterNotifications:any = []
+  leftBottomNotifications:any = []
 
-  rightTopNotifications:any = {}
-  rightCenterNotifications:any = {}
-  rightBottomNotifications:any = {}
+  rightTopNotifications:any = []
+  rightCenterNotifications:any = []
+  rightBottomNotifications:any = []
 
-  centerTopNotifications:any = {}
-  centerCenterNotifications:any = {}
-  centerBottomNotifications:any = {}
+  centerTopNotifications:any = []
+  centerCenterNotifications:any = []
+  centerBottomNotifications:any = []
 
 
   namesCache = {}
@@ -162,6 +128,16 @@ export default class NotificationCenterComponent extends Vue {
   // Еще важный момент нужно сделать анимацию у alert опциональной
   //Сюда по сути должны прийдти данные по alert которые мы регистрируем
 
+  getStyleAlert(position: string)
+  {
+    let baseStyle: any = {'animation-duration': this.opts.showHideDuration}
+    if(position.indexOf("top") !== -1) {
+      baseStyle['margin-bottom'] = this.opts.spacing
+    } else {
+      baseStyle['margin-top'] = this.opts.spacing
+    }
+    return baseStyle
+  }
   getStack(position: string): any{
     let cache = this.typeStack[position]
     if(typeof(cache) !== "undefined") {
@@ -200,24 +176,25 @@ export default class NotificationCenterComponent extends Vue {
   }
   increment(position: string){
     if(typeof(this.countNotify[position]) !== "undefined") {
-      this.countNotify[position]++
-      this.countNotify["all"]++
+      this.$set(this.countNotify,position,this.countNotify[position] + 1)
+      this.$set(this.countNotify,"all",this.countNotify["all"] + 1)
     } else {
       console.error(`position: ${position} not found.`)
     }
   }
   decrement(position: string){
     if(typeof(this.countNotify[position]) !== "undefined") {
-      this.countNotify[position]--
-      this.countNotify["all"]--
+      this.$set(this.countNotify,position,this.countNotify[position] - 1)
+      this.$set(this.countNotify,"all",this.countNotify["all"] - 1)
     } else {
       console.error(`position: ${position} not found.`)
     }
   }
 
 
-  closeHandler(index: number, position: string) {
-    let storage: any = this.getStorage(position)
+  closeHandler(alert: any) {
+    let storage: any = this.getStorage(alert.settings.position)
+
     this.removeAlert(storage,alert)
   }
 
@@ -238,41 +215,93 @@ export default class NotificationCenterComponent extends Vue {
   {
     let alert: any = this.getStack(position)
     if(!alert) {
+      if(this.typeStack[position].length > 0) {
+        let timer = setTimeout(()=>{
+          this.addAlert(position)
+          clearTimeout(timer)
+        },3000)
+      }
       return;
     }
     let notification = this.getStorage(alert.settings.position)
-    this.$set(notification,alert.id,alert)
-    this.increment(alert.settings.position)
-    if(alert.eventType === 'notify') {
-      this.removeForTime(notification, alert)
-    }
-  }
 
+    if(alert.settings.autoClose) {
+      alert.dateTimer = Date.now()
+      alert.timer = this.removeForTime(notification, alert)
+    }
+    this.addAlertStorage(notification, alert)
+    this.increment(alert.settings.position)
+  }
+  mouseEnter(alert: any) {
+    let storage = this.getStorage(alert.settings.position)
+    let index = storage.indexOf(alert)
+    if(storage[index]) {
+      storage[index].dateEnd = Date.now()
+    }
+
+    clearInterval(alert.timer)
+  }
+  getDuration()
+  {
+    return this.opts.animationDuration / 1000 + "s"
+  }
+  mouseLeave(alert: any) {
+    let timePassed = alert.dateEnd - alert.dateTimer
+    let time = this.opts.animationDuration - timePassed - alert.timePassed
+    let storage = this.getStorage(alert.settings.position)
+    let index = storage.indexOf(alert)
+    if(storage[index]) {
+      storage[index].dateTimer = Date.now()
+      storage[index].timePassed = alert.timePassed + timePassed
+      storage[index].timer = this.removeForTime(this.getStorage(alert.settings.position),alert, time)
+    }
+
+  }
+  addAlertStorage(storage: any, alert: any) {
+    if(this.opts.newItemsOnTop === true) {
+      if(alert.settings.position.indexOf("top") !== -1) {
+        storage.push(alert)
+
+      } else {
+        storage.unshift(alert)
+      }
+    } else {
+      if(alert.settings.position.indexOf("top") !== -1) {
+        storage.unshift(alert)
+      } else {
+        storage.push(alert)
+      }
+    }
+
+
+  }
   removeAlert(storage: any,alert: any)
   {
-    this.$delete(storage, alert.id)
+    let index = storage.indexOf(alert)
+    if(storage[index].timer) {
+      clearTimeout(storage[index].timer)
+    }
+    this.$delete(storage, index)
     this.decrement(alert.settings.position)
   }
 
-  removeForTime(storage: any, alert: any) {
+  removeForTime(storage: any, alert: any, time?:number) {
+    if(!time) {
+      time = this.opts.animationDuration
+    }
     let timer = setTimeout(()=> {
       this.removeAlert(storage, alert)
-      this.addAlert(alert.settings.position)
       clearTimeout(timer)
-    },3000)
-  }
-
-
-  registerAlert(alert: any) {
-   // this.$set(this.notifyCache,this.notifyCache.length, alert)
+    },time)
+    return timer
   }
 
   created() {
     this.opts = this.$notify.getOptions()
-    console.log(this.opts)
-    this.$notify.on("notify",(event: any)=>{
-      this.setStack(event)
-      this.addAlert(event.settings.position)
+    this.$notify.on("notify",(alert: any)=>{
+      alert.timePassed = 0
+      this.setStack(alert)
+      this.addAlert(alert.settings.position)
     })
   }
   mounted() {

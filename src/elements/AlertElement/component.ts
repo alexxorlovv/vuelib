@@ -13,7 +13,7 @@ import CollapseTransitionElement from '@/elements/CollapseTransitionElement.vue'
     props: {
       showProgress: {
         type: Boolean,
-        default: true,
+        default: false,
         required: false,
       },
       progressDuration:{

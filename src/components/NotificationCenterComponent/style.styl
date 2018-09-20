@@ -2,15 +2,20 @@
 @import "~@assets/theme/mixins"
 
 
-.list-enter-active, .list-leave-active {
-  transition: all 1s;
-}
-.list-enter, .list-leave-to /* .list-leave-active до версии 2.1.8 */ {
-  opacity: 0;
-  transform: translateX(30px);
-}
+
+
+
+.notification-center__backdrop
+  position absolute
+  width 100%
+  height 100%
+  background rgba(0,0,0,.7)
+
+.notification-center_hover-pause > .alert:hover > .progress-bar > .bar
+  animation-play-state paused
 
 .notification-center > .alert
+  transition all ease-out .6s
   max-width 600px
 
 .notification-center_position_left-top
@@ -40,7 +45,7 @@
 .notification-center_position_right-center > .alert:first-child,
 .notification-center_position_center-center > .alert:first-child,
 .notification-center_position_left-center > .alert:first-child
-  margin-top 0
+  margin-top 0 !important
 
 .notification-center_position_right-top > .alert,
 .notification-center_position_left-top > .alert,
@@ -50,7 +55,7 @@
 .notification-center_position_right-top > .alert:last-child,
 .notification-center_position_left-top > .alert:last-child,
 .notification-center_position_center-top > .alert:last-child
-  margin-bottom 0px
+  margin-bottom 0px !important
 
 .notification-center_position_right-center
   right 0
@@ -83,77 +88,5 @@
   position absolute
   padding 20px
 
-// .notification-center-wrapper .alert
-//   max-width 300px
-// .notification-center-wrapper
-//   position absolute
-//   display flex
-//   flex-flow row nowrap
-//   z-index 999999999999999
-//   width 100%
-//   align-content stretch
-//   height 100%
-//   justify-content space-between
-// .notification-center-wrapper__left,.notification-center-wrapper__right,.notification-center-wrapper__center
-//   // flex-grow 1
-//   display flex
-//   flex-flow column nowrap
-//   justify-content space-between
-//   padding 20px
 
-// .notification-center-wrapper__left > .notification-center_position_top > div
-//   margin-bottom 10px
-// .notification-center-wrapper__left > .notification-center_position_center > div
-//   margin-top 10px
-// .notification-center-wrapper__left > .notification-center_position_bottom > div
-//   margin-top 10px
-
-
-
-// .notification-center-wrapper__center > .notification-center_position_top > div
-//   margin-bottom 10px
-// .notification-center-wrapper__center > .notification-center_position_center > div
-//   margin-top 10px
-// .notification-center-wrapper__center > .notification-center_position_bottom > div
-//   margin-top 10px
-
-
-// .notification-center-wrapper__right > .notification-center_position_top > div
-//   margin-bottom 10px
-// .notification-center-wrapper__right > .notification-center_position_center > div
-//   margin-top 10px
-// .notification-center-wrapper__right > .notification-center_position_bottom > div
-//   margin-top 10px
-
-
-
-
-
-//.notification-center-wrapper__left
-//.notification-center-wrapper__right
-
-
-// .notification-center
-//   position absolute
-//   display flex
-//   flex-flow column nowrap
-//   z-index 999999999999999
-
-// .notification-center_position_bottom-center
-// .notification-center_position_bottom-left
-//   bottom 10px
-//   left 10px
-// .notification-center_position_bottom-right
-//   bottom 10px
-//   left 10px
-// .notification-center_position_top-center
-//   top: 10px;
-//   justify-content center
-
-// .notification-center_position_top-left
-//   top 10px
-//   left 10px
-// .notification-center_position_top-right
-//   top 10px
-//   right 10px
 @import "./responsive/style"

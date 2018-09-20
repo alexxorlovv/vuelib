@@ -44,6 +44,8 @@ class MessageSettings
   type: string = "fill"
   isClose: boolean = true
   buttons: Array<any> = []
+  autoClose: boolean = false
+  component: string = "AlertElement"
 }
 
 enum MessageType
@@ -87,19 +89,19 @@ class NotificationService
     this.emitter.$emit("notify", notify)
   }
   danger(title: string, message: string, settings: object):void {
-    const defaultSettings = {icon:"error"}
+    const defaultSettings = {icon:"error", autoClose:true}
     this.message("danger", title, message, {...defaultSettings, ...settings})
   }
   success(title: string, message: string, settings: object):void {
-    const defaultSettings = {icon:"ok"}
+    const defaultSettings = {icon:"ok", autoClose:true}
     this.message("success", title, message, {...defaultSettings, ...settings})
   }
   warning(title: string, message: string, settings: object):void {
-    const defaultSettings = {icon:"error"}
+    const defaultSettings = {icon:"error", autoClose:true}
     this.message("warning", title, message, {...defaultSettings, ...settings})
   }
   info(title: string, message: string, settings: object):void {
-    const defaultSettings = {icon:"info"}
+    const defaultSettings = {icon:"info", autoClose:true}
     this.message("info", title, message, {...defaultSettings, ...settings})
   }
 
